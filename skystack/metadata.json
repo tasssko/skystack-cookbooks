@@ -1,0 +1,36 @@
+{
+"maintainer": "Skystack Limited.",
+"replacing": {},
+"dependencies": {},
+"recipes": {
+ "skystack::default": "skystack::default | Acts as a front controller for loading configurations in a organised way.",
+ "skystack::firewall": "skystack::firewall | Sets up a locked down firewall configuration, allowing traffic on port 22.",
+ "skystack::site": "skystack::site | Sets up a web server and virtual hosting environment.",
+ "skystack::script": "skystack::script | Runs ad hoc scripts during the build process.",
+ "skystack::mysql": "skystack::mysql | Sets up MySQL databases and users.",
+ "skystack::mongodb": "skystack::mongodb | Sets up MongoDB."
+},
+"maintainer_email": "support@skystack.com",
+"groupings": {},
+"recommendations": {},
+"platforms": {
+  "debian": [
+
+  ],
+  "centos": [
+
+  ],
+  "ubuntu": [
+
+  ],
+  "redhat": [
+
+  ]
+},
+"license": "Apache 2.0",
+"version": "0.01",
+"suggestions": {},
+"name": "skystack",
+"conflicting": {},
+"description": "Configures a variety of applications defined from Skystack"
+}
