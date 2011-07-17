@@ -81,13 +81,13 @@ unless Chef::Config[:solo]
   end
 end
 
-grants_path = "/opt/skystack/src/mysql/grants.sql"
+grants_path = "/opt/skystack/bootstrapper/etc/grants.sql"
 
 begin
-  t = resources(:template => "/opt/skystack/src/mysql/grants.sql")
+  t = resources(:template => "/opt/skystack/bootstrapper/etc/grants.sql")
 rescue
   Chef::Log.warn("Could not find previously defined grants.sql resource")
-  t = template "/opt/skystack/src/mysql/grants.sql" do
+  t = template "#{grants_path}" do
     path grants_path
     source "grants.sql.erb"
     owner "root"
@@ -101,7 +101,7 @@ execute "mysql-install-privileges" do
   command "/usr/bin/mysql -u root #{node[:mysql][:server_root_password].empty? ? '' : '-p' }#{node[:mysql][:server_root_password]} < #{grants_path}"
   action :nothing
   not_if "test -f /etc/init.d/mysql"
-  subscribes :run, resources(:template => "/opt/skystack/src/mysql/grants.sql"), :immediately
+  subscribes :run, resources(:template => "/opt/skystack/bootstrapper/etc/grants.sql"), :immediately
 end
 
 mysql_conf = "/opt/skystack/bootstrapper/etc/.mysql.root.shadow"
