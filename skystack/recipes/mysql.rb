@@ -44,8 +44,9 @@ end
 
 node[":dbs"].each do |db|
    new_password = secure_password
-   privs = db["permissions"].map { |i| "'" + i.to_s + "'" }.join(",")
-    
+   #privs = db["permissions"].map { |i| "'" + i.to_s + "'" }.join(",")
+   privs = db["permissions"].join(",")
+  
    mysql_database "create_#{db["name"]}" do
       root_username "root"
       root_password node[:mysql][:server_root_password]
