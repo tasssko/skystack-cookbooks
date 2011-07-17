@@ -52,7 +52,7 @@ node[":dbs"].each do |db|
       username db["user"]
       password new_password
       host "localhost"
-      priv "#{db["permissions"]}"
+      priv "#{db["permissions"].join(', ')}"
       action [:create, :grant, :flush]
    end
     
