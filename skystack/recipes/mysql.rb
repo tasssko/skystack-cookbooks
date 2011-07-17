@@ -69,5 +69,3 @@ node[":dbs"].each do |db|
       action :run
    end
 end
-###
-# Git is not detecting my changes
