@@ -20,10 +20,12 @@
 =end
 
 node[:webserver] ="apache2"
- 
+
+
 app = node.run_state[:current_app]
 
 if node[:webserver] == "apache2"
+  node[:apache][:listen_ports] = [ "80" ]
   include_recipe "apache2"
 else
   include_recipe "apache2"

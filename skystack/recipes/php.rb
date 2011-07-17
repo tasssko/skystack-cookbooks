@@ -1,9 +1,8 @@
 #
-# Author::  Joshua Timberman (<joshua@opscode.com>)
-# Cookbook Name:: php
-# Recipe:: php5-cgi
+# Cookbook Name:: skystack
+# Recipe:: php
 #
-# Copyright 2009, Opscode, Inc.
+# Copyright 2010, Skystack, Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,17 +18,11 @@
 #
 
 
-include_recipe "php::module_mysql"
-include_recipe "php::module_sqlite3"
-include_recipe "php::module_memcache"
-include_recipe "php::module_gd"
-include_recipe "php::module_pgsql"
+=begin
+{"name":"skystack::php","methods":["add_php","edit_php","delete_php"],"symbol":":php","properties":{"is_enabled":"boolean"}}
+=end
 
-case node[:platform]
-  when "centos", "redhat", "fedora", "suse"
-    #placeholder modify when available
-  when "debian" "ubuntu"
-    package "php5-cgi" do
-      action :upgrade
-    end
-end
+include_recipe "php::php5-cgi"
+
+
+
