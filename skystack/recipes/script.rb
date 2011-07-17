@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-=beginjson
+=begin
 {"name":"skystack::script","methods":["run_script","edit_script","delete_script"],"symbol":":scripts","properties":{":skyscript_id":"string",":resource":"string"}}
 =end
 
