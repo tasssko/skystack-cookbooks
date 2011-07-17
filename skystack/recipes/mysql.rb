@@ -45,11 +45,11 @@ end
 node[":dbs"].each do |db|
    new_password = secure_password
     
-   mysql_database "create_#{db["db_name"]}" do
+   mysql_database "create_#{db["name"]}" do
       root_username "root"
       root_password node[:mysql][:server_root_password]
-      database db["db_name"]
-      username db["db_user"]
+      database db["name"]
+      username db["user"]
       password new_password
       host "localhost"
       priv "#{db["permissions"]}"
@@ -61,10 +61,10 @@ node[":dbs"].each do |db|
       user "root"
       cwd "/tmp"
       code <<-EOH
-        mysql_conf = "/opt/skystack/bootstrapper/etc/.mysql.#{db["db_user"]}.shadow"
+        mysql_conf = "/opt/skystack/bootstrapper/etc/.mysql.#{db["user"]}.shadow"
         open(mysql_conf, 'a') do |f| f << "#{new_password}" end
       EOH
-      only_if do ! File.exists?( "/opt/skystack/bootstrapper/etc/.mysql.#{db["db_user"]}.shadow" ) end
+      only_if do ! File.exists?( "/opt/skystack/bootstrapper/etc/.mysql.#{db["user"]}.shadow" ) end
       action :run
    end
 end

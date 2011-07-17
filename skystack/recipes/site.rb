@@ -35,7 +35,7 @@ node[":sites"].each do |site|
     include_recipe "apache2::mod_ssl"
   end
 
-  Chef::Log.info "skystack::site adding #{site["server_name"]} to #{node[":webserver"]}"
+  Chef::Log.info "skystack::site adding #{site["server_name"]} to server"
   web_app site["server_name"] do
     template "skybuild_php5_#{node[:webserver]}.erb"
     docroot site["document_root"]
