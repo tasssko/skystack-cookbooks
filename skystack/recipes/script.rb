@@ -34,7 +34,7 @@ node[":scripts"].each do |script|
   #all interactions with our API should be done via a Ruby script to cleanup the execution of a SkyScript.
   Chef::Log.info "skystack::script via skystack we fetch the script contents #{script["skyscript_id"]}"
   bash "get_skyscript" do
-    interpreter "#{ext}"
+    interpreter "#{script["ext"].gsub(".", "")}"
     user "root"
     cwd "/tmp"
     code <<-EOH
