@@ -20,6 +20,8 @@
 =end
 include_recipe "iptables"
 
+  node[:security] = "custom"
+
   if node[:security] == "hardened"
     #deny-by-default
     iptables_rule "firewall_all_established" do
@@ -37,13 +39,15 @@ include_recipe "iptables"
       order 30
     end
     
+  end
+  
     if node[:firewall]
        node[:firewall].each do |rule|
           iptables_rule "firewall_#{rule}" do 
             order 50
           end
       end
-    end
+
      iptables_rule "firewall_all_drop" do 
        order 99
     end

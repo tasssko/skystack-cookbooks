@@ -16,7 +16,7 @@
 #
 
 =beginjson
-{"name":"skystack::site","methods":["add_site","edit_site","delete_site"],"symbol":":sites","properties":{":ssl":"boolean",":server_name":"string",":server_aliases":"string",":document_root":"string",":is_enabled":"boolean"}}
+{"name":"skystack::site","methods":["add_site","edit_site","delete_site"],"symbol":":sites","properties":{"ssl":"boolean","server_name":"string","server_aliases":"string","document_root":"string","is_enabled":"boolean"}}
 =end
 
 node[:webserver] ="apache2"
@@ -30,21 +30,21 @@ else
 end
 
 Chef::Log.info "skystack::site preparing to add virtual hosts and document roots."
-node[:sites].each do |site|
-  if site[:ssl] == 1
+node[":sites"].each do |site|
+  if site["ssl"] == 1
     include_recipe "apache2::mod_ssl"
   end
 
-  Chef::Log.info "skystack::site adding #{site[:server_name]} to #{node[:webserver]}"
-  web_app site[:server_name] do
+  Chef::Log.info "skystack::site adding #{site["server_name"]} to #{node[":webserver"]}"
+  web_app site["server_name"] do
     template "skybuild_php5_#{node[:webserver]}.erb"
-    docroot site[:document_root]
-    server_name site[:server_name]
-    server_aliases site[:server_aliases]
+    docroot site["document_root"]
+    server_name site["server_name"]
+    server_aliases site["server_aliases"]
   end
 
-  Chef::Log.info "skystack::site creating #{site[:document_root]}"
-  directory site[:document_root] do
+  Chef::Log.info "skystack::site creating #{site["document_root"]}"
+  directory site["document_root"] do
     owner "www-data"
     group "www-data"
     mode "0755"
@@ -52,7 +52,7 @@ node[:sites].each do |site|
     recursive true
   end
 
-  cookbook_file "#{site[:document_root]}/index.php" do
+  cookbook_file "#{site["document_root"]}/index.php" do
     source "index.php"
     mode 0755
     owner "www-data"

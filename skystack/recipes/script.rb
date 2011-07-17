@@ -17,22 +17,22 @@
 #
 
 =begin
-{"name":"skystack::script","methods":["run_script","edit_script","delete_script"],"symbol":":scripts","properties":{":skyscript_id":"string",":resource":"string"}}
+{"name":"skystack::script","methods":["run_script","edit_script","delete_script"],"symbol":":scripts","properties":{"skyscript_id":"string","resource":"string"}}
 =end
 
 script = node.run_state[:current_app]
 
 
-node[:scripts].each do |script|
-  Chef::Log.info "skystack::script telling chef to run this script #{script[:skyscript_id]}"
-  script[:ext] = File.extname(script[:resource])
-  execute "run_skyscript_#{script[:skyscript_id]}" do
-    command "/tmp/#{script[:skyscript_id]}#{script[:ext]};touch /opt/skystack/tmp/executed-#{script[:skyscript_id]}"
+node[":scripts"].each do |script|
+  Chef::Log.info "skystack::script telling chef to run this script #{script["skyscript_id"]}"
+  script["ext"] = File.extname(script["resource"])
+  execute "run_skyscript_#{script["skyscript_id"]}" do
+    command "/tmp/#{script["skyscript_id"]}#{script["ext"]};touch /opt/skystack/tmp/executed-#{script["skyscript_id"]}"
     action :nothing
-    only_if do ! File.exists?( "/opt/skystack/tmp/executed-#{script[:skyscript_id]}" ) end
+    only_if do ! File.exists?( "/opt/skystack/tmp/executed-#{script["skyscript_id"]}" ) end
   end
   #all interactions with our API should be done via a Ruby script to cleanup the execution of a SkyScript.
-  Chef::Log.info "skystack::script via skystack we fetch the script contents #{script[:skyscript_id]}"
+  Chef::Log.info "skystack::script via skystack we fetch the script contents #{script["skyscript_id"]}"
   bash "get_skyscript" do
     interpreter "#{ext}"
     user "root"
@@ -50,11 +50,11 @@ node[:scripts].each do |script|
     	HTTP=https
     fi
   
-    curl -o /tmp/#{script[:skyscript_id]}_part -u $SS_APIUSER:$SS_APITOKEN $HTTP://$SS_BASE/$SS_ALIAS/scripts/#{script[:skyscript_id]}#{script[:ext]}
-    tr -d '\015\032' < /tmp/#{script[:skyscript_id]}_part > /tmp/#{script[:skyscript_id]}#{script[:ext]}
-    chmod +x /tmp/#{script[:skyscript_id]}#{script[:ext]}
+    curl -o /tmp/#{script["skyscript_id"]}_part -u $SS_APIUSER:$SS_APITOKEN $HTTP://$SS_BASE/$SS_ALIAS/scripts/#{script["skyscript_id"]}#{script["ext"]}
+    tr -d '\015\032' < /tmp/#{script["skyscript_id"]}_part > /tmp/#{script["skyscript_id"]}#{script["ext"]}
+    chmod +x /tmp/#{script["skyscript_id"]}#{script["ext"]}
     EOH
-    notifies :run, resources(:execute => "run_skyscript_#{script[:skyscript_id]}")
-    creates "/tmp/#{script[:skyscript_id]}#{script[:ext]}"
+    notifies :run, resources(:execute => "run_skyscript_#{script["skyscript_id"]}")
+    creates "/tmp/#{script["skyscript_id"]}#{script["ext"]}"
   end
 end
