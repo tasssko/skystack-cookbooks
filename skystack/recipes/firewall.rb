@@ -15,9 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-=begin
-{skystack_firewall,{methods,[select_rules]},
-{properties,{firewall,[{all_established,boolean},{all_lo,boolean},{all_icmp,boolean},{all_ssh,boolean},{all_www,boolean}]}}}
+=beginjson
+{"name":"skystack::firewall","methods":["toggle_rules"],"symbol":":firewall","properties":{"all_established":"boolean","all_lo":"boolean","all_icmp":"boolean","all_ssh":"boolean","all_www":"boolean"}}
 =end
 include_recipe "iptables"
 

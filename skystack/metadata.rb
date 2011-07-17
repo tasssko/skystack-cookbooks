@@ -10,7 +10,6 @@ recipe           "skystack::site", "Sets up a web server and virtual hosting env
 recipe           "skystack::script", "Runs ad hoc scripts during the build process."
 recipe           "skystack::mysql", "Sets up MySQL."
 recipe           "skystack::mongodb", "Sets up MongoDB."
-
 %w{ apache2 php }.each do |cb|
   depends cb
 end

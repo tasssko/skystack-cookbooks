@@ -16,10 +16,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-=begin
-{skystack_script,{methods,[run_script]},
-{properties,{scripts,[{type,string},{skyscript_id,string},{ext,string}]}}}
+
+=beginjson
+{"name":"skystack::script","methods":["run_script","edit_script","delete_script"],"symbol":":script","properties":{"skyscript_id":"string","resource":"string"}}
 =end
+
 script = node.run_state[:current_app]
 
 execute "run_skyscript_#{script[:skyscript_id]}" do

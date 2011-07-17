@@ -15,10 +15,10 @@
 # limitations under the License.
 #
 
-=begin
-{skystack_site,{methods,[add_site,edit_site,delete_site]},
-{properties,{sites,[{ssl,boolean},{server_name,string},{server_aliases,string},{document_root,string},{is_enabled,boolean}]}}}
+=beginjson
+{"name":"skystack::site","methods":["add_site","edit_site","delete_site"],"symbol":":sites","properties":{":ssl":"boolean",":server_name":"string",":server_aliases":"string",":document_root":"string",":is_enabled":"boolean"}}
 =end
+
 node[:webserver] ="apache2"
  
 app = node.run_state[:current_app]

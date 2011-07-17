@@ -16,10 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-=begin
-{skystack_mysql,{methods,[add_database,edit_database,delete_database]},
-{properties,{dbs,[{db_name,boolean},{db_user,string}]}}}
-
+=beginjson
+{"name":"skystack::mysql","methods":["add_database","edit_database","delete_database"],"symbol":":dbs","properties":{"name":"string","user":"string","permissions":["SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP"]}}
 =end
 
 class Chef::Recipe
