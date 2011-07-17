@@ -44,8 +44,6 @@ end
 
 node[":dbs"].each do |db|
    new_password = secure_password
-   #privs = db["permissions"].map { |i| "'" + i.to_s + "'" }.join(",")
-   privs = db["permissions"].join(",")
   
    mysql_database "create_#{db["name"]}" do
       root_username "root"
@@ -54,7 +52,7 @@ node[":dbs"].each do |db|
       username db["user"]
       password new_password
       host "localhost"
-      priv "#{privs}"
+      priv "#{db["permissions"].join(",")}"
       action [:create, :grant, :flush]
    end
     
