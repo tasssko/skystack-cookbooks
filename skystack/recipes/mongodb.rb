@@ -1,6 +1,5 @@
-#
 # Cookbook Name:: skystack
-# Recipe:: mongodb
+# Recipe:: skystack::mongodb
 #
 # Copyright 2010, Skystack, Ltd.
 #
@@ -16,9 +15,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 =beginjson
 {"name":"skystack::mongo","methods":["add_database","edit_database","delete_database"],"symbol":":dbs","properties":{"name":"boolean","user":"string","0":"permissions"}}
 =end
+
 db = node.run_state[:current_app]
 include_recipe "mongodb::source"
 

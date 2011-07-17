@@ -1,6 +1,5 @@
-# Cookbook Name:: skystack_apps
-# Recipe:: firewall
-# Implements:: iptables Cookbook
+# Cookbook Name:: skystack
+# Recipe:: skystack::firewall
 # Copyright 2010, Skystack, Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 =beginjson
 {"name":"skystack::firewall","methods":["toggle_rules"],"symbol":":firewall","properties":{"all_established":"boolean","all_lo":"boolean","all_icmp":"boolean","all_ssh":"boolean","all_www":"boolean"}}
 =end

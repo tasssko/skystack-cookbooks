@@ -1,6 +1,5 @@
-#
 # Cookbook Name:: skystack
-# Recipe:: mysql
+# Recipe:: skystack::mysql
 #
 # Copyright 2010, Skystack, Ltd.
 #
@@ -16,6 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 =beginjson
 {"name":"skystack::mysql","methods":["add_database","edit_database","delete_database"],"symbol":":dbs","properties":{"name":"string","user":"string","permissions":["SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP"]}}
 =end

@@ -1,7 +1,6 @@
 # Cookbook Name:: skystack
-# Recipe:: script
+# Recipe:: skystack::script
 # Description:: Multi-purpose recipe for executing SkyScripts during the bootstrap/commission and decommission phases, the recipe uses a lock file to prevent further execution.
-# Parameters:: script[:script_id],script[:ext],script[:type]
 # Copyright:: 2010, Skystack, Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
