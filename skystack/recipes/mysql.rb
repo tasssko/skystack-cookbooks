@@ -24,8 +24,6 @@ class Chef::Recipe
  include Opscode::OpenSSL::Password
 end
 
-db = node.run_state[:current_app]
-
 include_recipe "build-essential"
 
 mysql_conf = "/opt/skystack/bootstrapper/etc/.mysql.shadow"
@@ -34,7 +32,7 @@ include_recipe "mysql"
 include_recipe "openssl"
 include_recipe "mysql::client"
 include_recipe "mysql::server"
-include_recipe "php::module_mysql"
+
 
 ruby_block "fetch_root_password" do
   block do
@@ -45,9 +43,7 @@ ruby_block "fetch_root_password" do
   only_if do File.exists?( mysql_conf ) end
 end
 
-node[:dbs].each do |db|
-  if db[:type] == "mysql" 
-    
+node[":dbs"].each do |db|
    new_password = secure_password
     
    mysql_database "create_#{db["db_name"]}" do
@@ -72,6 +68,4 @@ node[:dbs].each do |db|
       only_if do ! File.exists?( "/opt/skystack/bootstrapper/etc/.mysql.#{db["db_user"]}.shadow" ) end
       action :run
    end
-      
-  end
 end
