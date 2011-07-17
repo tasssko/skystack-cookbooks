@@ -7,9 +7,9 @@ action :create do
       db.query("CREATE DATABASE IF NOT EXISTS #{new_resource.database};")
       new_resource.updated_by_last_action(true)
     ensure
-      db.close
+#     db close
     end
- # end
+# end
 end
 
 action :grant do
@@ -19,7 +19,7 @@ action :grant do
       db.query("GRANT #{new_resource.priv} ON #{new_resource.database}.* TO `#{new_resource.username}`@`#{new_resource.host}` IDENTIFIED BY '#{new_resource.password}';")
       new_resource.updated_by_last_action(true)
     ensure
-      db.close
+#     db close
     end
 # end
 end
@@ -31,7 +31,7 @@ action :drop do
        db.query("DROP DATABASE #{new_resource.database};")
        new_resource.updated_by_last_action(true)
      ensure
-       db.close
+#    db close
      end
 # end    
 end
@@ -43,7 +43,7 @@ action :flush_tables_with_read_lock do
         db.query "flush tables with read lock"
         new_resource.updated_by_last_action(true)
       ensure
-        db.close
+#      db close
       end
 # end    
 end
@@ -56,7 +56,7 @@ action :flush do
         db.query("FLUSH PRIVILEGES;")
         new_resource.updated_by_last_action(true)
       ensure
-        db.close
+#      db close
       end
 #  end    
 end
@@ -68,7 +68,7 @@ action :unflush_tables do
         db.query "unlock tables"
         new_resource.updated_by_last_action(true)
       ensure
-        db.close
+#      db close
       end
 #  end    
 end
