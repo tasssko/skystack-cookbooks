@@ -26,7 +26,7 @@ end
 
 include_recipe "build-essential"
 
-mysql_conf = "/opt/skystack/bootstrapper/etc/.mysql.shadow"
+mysql_conf = "/opt/skystack/bootstrapper/etc/.mysql.root.shadow"
 
 include_recipe "mysql"
 include_recipe "openssl"

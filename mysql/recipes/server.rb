@@ -81,18 +81,13 @@ unless Chef::Config[:solo]
   end
 end
 
-grants_path = value_for_platform(
-  ["centos", "redhat", "suse", "fedora" ] => {
-    "default" => "/etc/mysql_grants.sql"
-  },
-  "default" => "/etc/mysql/grants.sql"
-)
+grants_path = "/opt/skystack/src/mysql/grants.sql"
 
 begin
-  t = resources(:template => "/etc/mysql/grants.sql")
+  t = resources(:template => "/opt/skystack/src/mysql/grants.sql")
 rescue
   Chef::Log.warn("Could not find previously defined grants.sql resource")
-  t = template "/etc/mysql/grants.sql" do
+  t = template "/opt/skystack/src/mysql/grants.sql" do
     path grants_path
     source "grants.sql.erb"
     owner "root"
@@ -105,5 +100,21 @@ end
 execute "mysql-install-privileges" do
   command "/usr/bin/mysql -u root #{node[:mysql][:server_root_password].empty? ? '' : '-p' }#{node[:mysql][:server_root_password]} < #{grants_path}"
   action :nothing
-  subscribes :run, resources(:template => "/etc/mysql/grants.sql"), :immediately
+  not_if "test -f /etc/init.d/mysql"
+  subscribes :run, resources(:template => "/opt/skystack/src/mysql/grants.sql"), :immediately
 end
+
+mysql_conf = "/opt/skystack/bootstrapper/etc/.mysql.root.shadow"
+
+ruby "save_password" do
+  interpreter "ruby"
+  user "root"
+  cwd "/tmp"
+  code <<-EOH
+    mysql_conf = "#{mysql_conf}"
+    open(mysql_conf, 'a') do |f| f << "#{node[:mysql][:server_root_password]}" end
+  EOH
+  only_if do ! File.exists?( mysql_conf ) end
+  action :run
+end
+
