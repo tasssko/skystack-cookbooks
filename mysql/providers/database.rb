@@ -9,6 +9,7 @@ action :create do
     ensure
       db.close
     end
+  end
 end
 
 action :grant do
