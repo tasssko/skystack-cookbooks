@@ -22,8 +22,9 @@
 
 script = node.run_state[:current_app]
 
-Chef::Log.info "skystack::script telling chef to run this script #{script[:skyscript_id]}"
+
 node[:scripts].each do |script|
+  Chef::Log.info "skystack::script telling chef to run this script #{script[:skyscript_id]}"
   script[:ext] = File.extname(script[:resource])
   execute "run_skyscript_#{script[:skyscript_id]}" do
     command "/tmp/#{script[:skyscript_id]}#{script[:ext]};touch /opt/skystack/tmp/executed-#{script[:skyscript_id]}"
