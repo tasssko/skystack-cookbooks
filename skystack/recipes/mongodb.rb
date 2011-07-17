@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-=beginjson
+=begin
 {"name":"skystack::mongo","methods":["add_database","edit_database","delete_database"],"symbol":":dbs","properties":{"name":"boolean","user":"string","0":"permissions"}}
 =end
 

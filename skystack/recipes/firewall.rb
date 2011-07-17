@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-=beginjson
+=begin
 {"name":"skystack::firewall","methods":["toggle_rules"],"symbol":":firewall","properties":{"all_established":"boolean","all_lo":"boolean","all_icmp":"boolean","all_ssh":"boolean","all_www":"boolean"}}
 =end
 include_recipe "iptables"

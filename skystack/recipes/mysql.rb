@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-=beginjson
+=begin
 {"name":"skystack::mysql","methods":["add_database","edit_database","delete_database"],"symbol":":dbs","properties":{"name":"string","user":"string","permissions":["SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP"]}}
 =end
 

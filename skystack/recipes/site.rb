@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-=beginjson
+=begin
 {"name":"skystack::site","methods":["add_site","edit_site","delete_site"],"symbol":":sites","properties":{"ssl":"boolean","server_name":"string","server_aliases":"string","document_root":"string","is_enabled":"boolean"}}
 =end
 
