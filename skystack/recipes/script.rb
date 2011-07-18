@@ -17,7 +17,7 @@
 #
 
 =begin
-{"name":"skystack::script","methods":["run_script","edit_script","delete_script"],"symbol":":scripts","properties":{"skyscript_id":"string","resource":"string"}}
+{"name":"skystack::script","order":"after","methods":["run_script","edit_script","delete_script"],"symbol":":scripts","properties":{"skyscript_id":"string","resource":"string"}}
 =end
 
 script = node.run_state[:current_app]
