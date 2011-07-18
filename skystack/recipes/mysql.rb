@@ -29,6 +29,7 @@ include_recipe "build-essential"
 mysql_conf = "/opt/skystack/bootstrapper/etc/.mysql.root.shadow"
 
 include_recipe "mysql"
+include_recipe "mysql::client"
 include_recipe "openssl"
 include_recipe "mysql::server"
 
@@ -44,7 +45,6 @@ end
 
 node[":dbs"].each do |db|
    new_password = secure_password
-  
    mysql_database "create_#{db["name"]}" do
       root_username "root"
       root_password node[:mysql][:server_root_password]
