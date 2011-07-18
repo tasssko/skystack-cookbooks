@@ -18,44 +18,42 @@
 =begin
 {"name":"skystack::firewall","order":"auto","methods":["toggle_rules"],"symbol":":firewall","properties":{"all_established":"boolean","all_lo":"boolean","all_icmp":"boolean","all_ssh":"boolean","all_www":"boolean"}}
 =end
+
 include_recipe "iptables"
 
-   if node[":firewall"]
-      node[":firewall"].each do |rule|
+node[":firewall"].each do |rule|
  
-        if rule["all_established"] == "1"
-          iptables_rule "firewall_all_established" do
-            order 0
-          end
-        end
-   
-        if rule["all_lo"] == "1"
-          iptables_rule "firewall_all_lo" do
-            order 10
-          end
-        end
- 
-        if rule["all_icmp"] == "1"
-          iptables_rule "firewall_all_icmp" do
-            order 20
-          end
-        end
-   
-        if rule["all_www"] == "1"
-          iptables_rule "firewall_all_www" do
-            order 30
-          end
-        end
-   
-        iptables_rule "firewall_all_ssh" do
-          order 40
-        end
-        
-        iptables_rule "firewall_all_drop" do 
-          order 200
-        end
-        
-      end #end block
+  if rule["all_established"] == "1"
+    iptables_rule "firewall_all_established" do
+      order 0
+    end
+  end
+
+  if rule["all_lo"] == "1"
+    iptables_rule "firewall_all_lo" do
+      order 10
+    end
+  end
+
+  if rule["all_icmp"] == "1"
+    iptables_rule "firewall_all_icmp" do
+      order 20
+    end
+  end
+
+  if rule["all_www"] == "1"
+    iptables_rule "firewall_all_www" do
+      order 30
+    end
+  end
+  
+end #end block
       
+  iptables_rule "firewall_all_ssh" do
+    order 40
+  end
+  
+  iptables_rule "firewall_all_drop" do 
+    order 200
   end
   
