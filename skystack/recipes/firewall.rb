@@ -20,42 +20,41 @@
 =end
 include_recipe "iptables"
 
-  node[:security] = "custom"
-
-  if node[:security] == "hardened"
-    #deny-by-default
-    iptables_rule "firewall_all_established" do
-      order 0
-    end
-    iptables_rule "firewall_all_lo" do
-      order 10
-    end
-    
-    iptables_rule "firewall_all_icmp" do
-      order 20
-    end
-    
-    iptables_rule "firewall_all_ssh" do
-      order 30
-    end
-    
+   if node[:firewall]
+      node[:firewall].each do |rule|
+ 
+        if rule["all_established"]  
+          iptables_rule "firewall_all_established" do
+            order 0
+          end
+        end
+   
+        if rule["all_lo"]  
+          iptables_rule "firewall_all_lo" do
+            order 10
+          end
+        end
+ 
+        if rule["all_icmp"]
+          iptables_rule "firewall_all_icmp" do
+            order 20
+          end
+        end
+   
+        if rule["all_www"]
+          iptables_rule "firewall_all_www" do
+            order 30
+          end
+        end
+   
+        iptables_rule "firewall_all_ssh" do
+          order 40
+        end
+        
+        iptables_rule "firewall_all_drop" do 
+          order 200
+        end
+      end
+      
   end
   
-    if node[:firewall]
-       node[:firewall].each do |rule|
-          iptables_rule "firewall_#{rule}" do 
-            order 50
-          end
-      end
-
-     iptables_rule "firewall_all_drop" do 
-       order 99
-    end
-     
-  else
-    # else minimal
-    #  iptables_rule "firewall_all_loopback"
-    #  iptables_rule "firewall_all_established"
-    #  iptables_rule "firewall_all_icmp"
-  end
-
