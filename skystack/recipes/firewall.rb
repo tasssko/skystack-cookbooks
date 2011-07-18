@@ -23,25 +23,25 @@ include_recipe "iptables"
    if node[:firewall]
       node[:firewall].each do |rule|
  
-        if rule["all_established"]  
+        if rule["all_established"] == 1
           iptables_rule "firewall_all_established" do
             order 0
           end
         end
    
-        if rule["all_lo"]  
+        if rule["all_lo"] == 1 
           iptables_rule "firewall_all_lo" do
             order 10
           end
         end
  
-        if rule["all_icmp"]
+        if rule["all_icmp"] == 1
           iptables_rule "firewall_all_icmp" do
             order 20
           end
         end
    
-        if rule["all_www"]
+        if rule["all_www"] == 1
           iptables_rule "firewall_all_www" do
             order 30
           end
@@ -54,7 +54,8 @@ include_recipe "iptables"
         iptables_rule "firewall_all_drop" do 
           order 200
         end
-      end
+        
+      end #end block
       
   end
   
