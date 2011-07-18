@@ -34,46 +34,4 @@ end
 
 node[:system][:size] = size
 
-if node[:apps]
-  node[:apps].each do |app|
-        node.run_state[:current_app] = app
-        
-        if node[:security] == "hardened"
-           node[:firewall] = 'all_www'
-        end
-        
-        Chef::Log.info "skystack::default preparing web server, this may take a while."
-        include_recipe "skystack::#{app["type"]}"
-        node.run_state.delete(:current_app)
-  end
-end
-
-if node[:dbs]
-  node[:dbs].each do |db|
-      node.run_state[:current_app] = db
-      Chef::Log.info "skystack::default preparing databases, this may take a while."
-      include_recipe "skystack::#{db["type"]}"
-      node.run_state.delete(:current_app)
-  end
-end
-
-if node[:scripts]
-  node[:scripts].each do |script|
-      node.run_state[:current_app] = script
-      Chef::Log.info "skystack::default fetching SkyScripts"
-      include_recipe "skystack::#{script[:type]}"
-      node.run_state.delete(:current_app)
-  end
-end
-
-if node[:access]
-  node[:access].each do |access|
-      node.run_state[:current_app] = access
-      Chef::Log.info "skystack::default fetching SkyAccess"
-      include_recipe "skystack::#{access[:type]}"
-      node.run_state.delete(:current_app)
-  end
-end
-
-  # Minimal settings will be loaded by default so no testing just include it here.
-    include_recipe "skystack::firewall"
+include_recipe "build-essential"
