@@ -43,14 +43,14 @@ node[":firewall"].each do |rule|
 
   if rule["all_www"] == "1"
     iptables_rule "firewall_all_www" do
-      order 30
+      order 40
     end
   end
   
 end #end block
       
   iptables_rule "firewall_all_ssh" do
-    order 40
+    order 30
   end
   
   iptables_rule "firewall_all_drop" do 
