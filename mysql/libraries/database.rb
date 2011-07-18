@@ -1,4 +1,5 @@
 begin
+  Gem.clear_paths
   require 'mysql'
 rescue LoadError
   Chef::Log.warn("Missing gem 'mysql'")
