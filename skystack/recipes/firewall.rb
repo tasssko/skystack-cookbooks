@@ -20,8 +20,8 @@
 =end
 include_recipe "iptables"
 
-   if node[:firewall]
-      node[:firewall].each do |rule|
+   if node[":firewall"]
+      node[":firewall"].each do |rule|
  
         if rule["all_established"] == 1
           iptables_rule "firewall_all_established" do
