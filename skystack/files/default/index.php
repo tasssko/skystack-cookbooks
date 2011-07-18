@@ -36,7 +36,7 @@
 	<a href="http://help.skystack.com/help/faqs">FAQ</a> • 
 	<a href="http://www.skystack.com/privacy">Privacy</a> • 
 	<a href="http://www.skystack.com/terms-of-service">Terms of Service</a>
-	<hr/>Skystack Manager • Version: v0.05b	
+	<hr/>Skystack • Version: v0.09b	
 
 	<div class="small">© Copyright 2010 Skystack Limited (#06873486), All Rights Reserved.
 	Skystack® and the 'Stack' device are registered trademarks of Skystack Limited. Company registered in England and Wales.</div>
