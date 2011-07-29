@@ -16,7 +16,7 @@
 #
 
 =begin
-{"name":"skystack::firewall","order":"auto","methods":["toggle_rules"],"symbol":":firewall","properties":{"all_established":"boolean","all_lo":"boolean","all_icmp":"boolean","all_ssh":"boolean","all_www":"boolean"}}
+{"name":"skystack::firewall","order":"auto","methods":["toggle"],"symbol":":newrelic","properties":{"php":"boolean","ruby":"boolean","application_name":"string"}}
 =end
 
 include_recipe "iptables"
