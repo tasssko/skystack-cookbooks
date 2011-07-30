@@ -17,7 +17,7 @@
 #
 
 =begin
-{"name":"skystack::mongo","methods":["add_database","edit_database","delete_database"],"symbol":":dbs","properties":{"name":"boolean","user":"string","0":"permissions"}}
+{"name":"skystack::mongo","cookbook":"mongodb","methods":["add_database","edit_database","delete_database"],"symbol":":dbs","properties":{"name":"boolean","user":"string","0":"permissions"}}
 =end
 
 db = node.run_state[:current_app]

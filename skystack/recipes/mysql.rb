@@ -17,7 +17,7 @@
 #
 
 =begin
-{"name":"skystack::mysql","order":"auto","methods":["add_database","edit_database","delete_database"],"symbol":":dbs","properties":{"name":"string","user":"string","permissions":["SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP"]}}
+{"name":"skystack::mysql","order":"auto","cookbook":"mysql","methods":["add_database","edit_database","delete_database"],"symbol":":dbs","properties":{"name":"string","user":"string","permissions":["SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP"]}}
 =end
 
 class Chef::Recipe

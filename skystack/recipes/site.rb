@@ -16,7 +16,7 @@
 #
 
 =begin
-{"name":"skystack::site","order":"auto","methods":["add_site","edit_site","delete_site"],"symbol":":sites","properties":{"ssl":"boolean","server_name":"string","server_aliases":"string","document_root":"string","is_enabled":"boolean"}}
+{"name":"skystack::site","order":"auto","cookbook":"apache2","methods":["add_site","edit_site","delete_site"],"symbol":":sites","properties":{"ssl":"boolean","server_name":"string","server_aliases":"string","document_root":"string","is_enabled":"boolean"}}
 =end
 
 node[:webserver] ="apache2"

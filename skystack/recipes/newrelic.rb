@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: skystack
-# Recipe:: php
+# Recipe:: newrelic
 #
 # Copyright 2010, Skystack, Ltd.
 #
@@ -18,5 +18,13 @@
 #
 
 =begin
-{"name":"skystack::newrelic","order":"auto","methods":["install","update","pause"],"symbol":":newrelic","properties":{"php":"boolean","ruby":"boolean"}}
+{"name":"skystack::newrelic","order":"auto","cookbook":"newrelic","methods":["install","update","pause"],"symbol":":newrelic","properties":{"php":"boolean","ruby":"boolean"}}
 =end
+
+include_recipe "newrelic"
+
+if(node[:newrelic]['php'] == "1")
+  include_recipe "newrelic::php"
+elsif (node[:newrelic]['ruby'] == "1")
+  include_recipe "newrelic::ruby"
+end

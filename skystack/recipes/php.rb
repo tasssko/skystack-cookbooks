@@ -19,7 +19,7 @@
 
 
 =begin
-{"name":"skystack::php","order":"auto","methods":["add_php","edit_php","delete_php"],"symbol":":php","properties":{"is_enabled":"boolean"}}
+{"name":"skystack::php","order":"auto","cookbook":"php","methods":["add_php","edit_php","delete_php"],"symbol":":php","properties":{"is_enabled":"boolean"}}
 =end
 
 include_recipe "php::php5-cgi"

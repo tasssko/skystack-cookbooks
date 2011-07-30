@@ -1,5 +1,5 @@
 # Cookbook Name:: skystack
-# Recipe:: skystack::firewall
+# Recipe:: skystack::newrelic
 # Copyright 2010, Skystack, Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,10 +16,9 @@
 #
 
 =begin
-{"name":"skystack::firewall","order":"auto","methods":["toggle"],"symbol":":newrelic","properties":{"php":"boolean","ruby":"boolean","application_name":"string"}}
+{"name":"skystack::firewall","order":"auto","methods":["toggle_rules"],"symbol":":firewall","properties":{"all_established":"boolean","all_lo":"boolean","all_icmp":"boolean","all_ssh":"boolean","all_www":"boolean"}}
 =end
 
-include_recipe "iptables"
 
 node[":firewall"].each do |rule|
  
