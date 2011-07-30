@@ -25,8 +25,14 @@ include_recipe "newrelic"
 
 node[":newrelic"].each do |nr|
 
-if(nr['php'] == "1")
-  include_recipe "newrelic::php"
-elsif (nr['ruby'] == "1")
-  include_recipe "newrelic::ruby"
+  if(nr['php'] == "1")
+  
+    include_recipe "newrelic::php"
+  
+  elsif (nr['ruby'] == "1")
+  
+    include_recipe "newrelic::ruby"
+  
+  end
+  
 end
