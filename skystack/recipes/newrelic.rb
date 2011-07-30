@@ -21,7 +21,7 @@
 {"name":"skystack::newrelic","order":"auto","cookbook":"newrelic","methods":["install","update","pause"],"symbol":":newrelic","properties":{"php":"boolean","ruby":"boolean"}}
 =end
 
-include_recipe "newrelic"
+include_recipe "newrelic::default"
 
 node[":newrelic"].each do |nr|
 
