@@ -21,12 +21,16 @@
 {"name":"skystack::newrelic","order":"auto","cookbook":"newrelic","methods":["install","update","pause"],"symbol":":newrelic","properties":{"appname":"string","php":"boolean","ruby":"boolean"}}
 =end
 
-include_recipe "newrelic::default"
+
 
 node[":newrelic"].each do |nr|
-
-  if(nr['php'] == "1")
   
+  node[:newrelic][:license_key] = nr["license_key"]
+  
+  include_recipe "newrelic::default"
+  
+  if(nr['php'] == "1")
+    
     include_recipe "newrelic::php"
   
   elsif (nr['ruby'] == "1")
