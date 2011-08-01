@@ -26,6 +26,14 @@
 	<p>This server was crafted by Skystack, and some excellent open source tools. We hope you enjoy this server as much as we enjoyed building it.</p>
 
 	<p>For more On-Demand Cloud services visit our website <a href="http://skystack.com" title="Skystack.com">Skystack.com</a></p>	
+	
+	<?php
+	
+	if(isset($_GET['show_php']) && $_GET['show_php'] == 1):
+		phpinfo();
+	endif;
+	
+	?>
 </div>
 	<div style="clear:both;"></div>
 </div>
