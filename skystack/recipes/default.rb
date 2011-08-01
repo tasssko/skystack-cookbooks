@@ -33,5 +33,5 @@ require 'ohai'
 end
 
 node[:system][:size] = size
-
+require_recipe "apt"
 include_recipe "build-essential"
