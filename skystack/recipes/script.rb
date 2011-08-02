@@ -44,7 +44,9 @@ node[":scripts"].each do |script|
     export SS_APIUSER=`awk '/SS_APIUSER/ {print $2}' FS=\= $SKYSTACK_PATH/etc/userdata.conf` > /dev/null 2>&1
     export SS_BASE=`awk '/SS_BASE/ {print $2}' FS=\= $SKYSTACK_PATH/etc/userdata.conf` > /dev/null 2>&1 
 
-    if [ $SS_BASE = my.skystack.local ];then
+    if [ "$SS_BASE" == "my.skystack.local" ]; then
+    	HTTP=http
+    elif [ "$SS_BASE" == "staging.my.skystack.com" ]; then
     	HTTP=http
     else
     	HTTP=https
