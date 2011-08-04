@@ -45,10 +45,10 @@ recipe            "apache2::mod_status", "Apache module 'status' with config fil
   supports os
 end
 
-attribute "apache",
-  :display_name => "Apache Hash",
-  :description => "Hash of Apache attributes",
-  :type => "hash"
+#attribute "apache",
+#  :display_name => "Apache Hash",
+#  :description => "Hash of Apache attributes",
+#  :type => "hash"
 
 attribute "apache/mpm",
     :display_name => "Apache MPM",
@@ -70,15 +70,15 @@ attribute "apache/user",
   :description => "User Apache runs as",
   :default => "www-data"
 
-attribute "apache/binary",
-  :display_name => "Apache Binary",
-  :description => "Apache server daemon program",
-  :default => "/usr/sbin/apache2"
+#attribute "apache/binary",
+#  :display_name => "Apache Binary",
+#  :description => "Apache server daemon program",
+#  :default => "/usr/sbin/apache2"
 
-attribute "apache/icondir", 
-  :display_name => "Apache Icondir",
-  :description => "Directory location for icons",
-  :default => "/usr/share/apache2/icons"
+#attribute "apache/icondir", 
+#  :display_name => "Apache Icondir",
+#  :description => "Directory location for icons",
+#  :default => "/usr/share/apache2/icons"
 
 attribute "apache/listen_ports",
   :display_name => "Apache Listen Ports",
@@ -89,7 +89,7 @@ attribute "apache/listen_ports",
 attribute "apache/contact",
   :display_name => "Apache Contact",
   :description => "Email address of webmaster",
-  :default => "ops@example.com"
+  :default => "hostmaster@skystack.com"
 
 attribute "apache/timeout",
   :display_name => "Apache Timeout",
@@ -131,10 +131,10 @@ attribute "apache/allowed_openids",
   :description => "Array of OpenIDs allowed to authenticate",
   :default => ""
 
-attribute "apache/prefork",
-  :display_name => "Apache Prefork",
-  :description => "Hash of Apache prefork tuning attributes.",
-  :type => "hash"
+#attribute "apache/prefork",
+#  :display_name => "Apache Prefork",
+#  :description => "Hash of Apache prefork tuning attributes.",
+#  :type => "hash"
 
 attribute "apache/prefork/startservers",
   :display_name => "Apache Prefork MPM StartServers",
@@ -166,10 +166,10 @@ attribute "apache/prefork/maxrequestsperchild",
   :description => "Maximum number of request a child process will handle",
   :default => "10000"
 
-attribute "apache/worker",
-  :display_name => "Apache Worker",
-  :description => "Hash of Apache prefork tuning attributes.",
-  :type => "hash"
+#attribute "apache/worker",
+#  :display_name => "Apache Worker",
+#  :description => "Hash of Apache prefork tuning attributes.",
+#  :type => "hash"
 
 attribute "apache/worker/startservers",
   :display_name => "Apache Worker MPM StartServers",

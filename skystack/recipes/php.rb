@@ -19,9 +19,10 @@
 
 
 =begin
-{"name":"skystack::php","order":"auto","cookbook":"php","methods":["add_php","edit_php","delete_php"],"symbol":":php","properties":{"modules":["apc":"boolean","curl":"boolean"],"is_enabled":"boolean"}}
+{"name":"skystack::php","order":"auto","cookbook":"php","methods":["add_php_modules"],"symbol":":php","properties":{"mysql":"boolean","apc":"boolean","curl":"boolean","memcache":"boolean","gd":"boolean","ldap":"boolean","pgsql":"boolean","fpdf":"boolean","fileinfo":"boolean","sqlite3":"boolean"}}
 =end
 
+include_recipe "php::php5"
 include_recipe "php::php5-cgi"
 
 

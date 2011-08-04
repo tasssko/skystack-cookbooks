@@ -22,6 +22,9 @@ package "apache2" do
   when "centos","redhat","fedora","suse"
     package_name "httpd"
   when "debian","ubuntu"
+    if node[:apache][:mpm] == "worker"
+      include_recipe "apache2::mod_fcgid"
+    end
     package_name "apache2"
   end
   action :install

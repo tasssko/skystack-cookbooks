@@ -1,65 +1,148 @@
 {
-    "providing": {
-    },
-    "platforms": {
-      "debian": [
+  "dependencies": {
+    "apache2": ">= 0.0.0"
+  },
+  "name": "php",
+  "maintainer_email": "cookbooks@opscode.com",
+  "attributes": {
+    "php/upload_max_filesize": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
 
       ],
-      "fedora": [
+      "default": "16M",
+      "type": "string",
+      "recipes": [
 
       ],
-      "centos": [
+      "display_name": "Upload max filesize",
+      "description": "Sets Memory Limit for php"
+    },
+    "php/memory_limit": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
 
       ],
-      "suse": [
+      "default": "32M",
+      "type": "string",
+      "recipes": [
 
       ],
-      "ubuntu": [
+      "display_name": "PHP Memory limit",
+      "description": "Sets Memory Limit"
+    },
+    "php/error_reporting": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
 
       ],
-      "redhat": [
+      "default": "E_ALL & ~E_DEPRECATED",
+      "type": "string",
+      "recipes": [
 
-      ]
+      ],
+      "display_name": "Error reporting level",
+      "description": "Sets PHP Error Reporting in php.ini"
     },
-    "description": "Installs and maintains php and php modules",
-    "attributes": {
-    },
-    "replacing": {
-    },
-    "dependencies": {
-      "apache2": [
+    "php/error_log": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
 
-      ]
+      ],
+      "default": "/var/log/php_error.log",
+      "type": "string",
+      "recipes": [
+
+      ],
+      "display_name": "Error log path",
+      "description": "Sets path for Error log"
     },
-    "version": "0.9.1",
-    "groupings": {
+    "php/post_max_size": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "16M",
+      "type": "string",
+      "recipes": [
+
+      ],
+      "display_name": "Post Max Size",
+      "description": "Sets Memory Limit for php"
     },
-    "long_description": "",
-    "recommendations": {
+    "php/date_timezone": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "Europe/London",
+      "type": "string",
+      "recipes": [
+
+      ],
+      "display_name": "Date timezone",
+      "description": "Sets the timezone"
     },
-    "maintainer": "Opscode, Inc.",
-    "suggestions": {
-    },
-    "license": "Apache 2.0",
-    "name": "php",
-    "maintainer_email": "cookbooks@opscode.com",
-    "recipes": {
-      "php::php4": "Install packages for PHP version 4",
-      "php::module_fpdf": "Install the php-fpdf package",
-      "php::php5": "Install php5 packages and php.ini config file",
-      "php::php5-cgi": "Install the php5-cgi package",
-      "php": "Empty, use one of the other recipes",
-      "php::module_sqlite3": "Install the php5-sqlite3 package",
-      "php::module_ldap": "Install the php5-ldap package",
-      "php::module_gd": "Install the php5-gd package",
-      "php::module_apc": "Install the php5-apc package",
-      "php::module_memcache": "Install the php5-memcache package",
-      "php::module_mysql": "Install the php5-mysql package",
-      "php::module_fileinfo": "Install the php5-fileinfo package",
-      "php::module_curl": "Install the php5-curl package",
-      "php::pear": "Install the php-pear package",
-      "php::module_pgsql": "Install the php5-pgsql packag"
-    },
-    "conflicting": {
+    "php/allow_url_fopen": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "Off",
+      "type": "string",
+      "recipes": [
+
+      ],
+      "display_name": "Allow url fopen",
+      "description": "Sets Memory Limit for php"
     }
+  },
+  "license": "Apache 2.0",
+  "suggestions": {
+  },
+  "platforms": {
+    "debian": ">= 0.0.0",
+    "fedora": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "suse": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0",
+    "redhat": ">= 0.0.0"
+  },
+  "maintainer": "Opscode, Inc.",
+  "long_description": "",
+  "version": "0.9.1",
+  "recommendations": {
+  },
+  "recipes": {
+    "php::module_fpdf": "Install the php-fpdf package",
+    "php::php5": "Install php5 packages and php.ini config file",
+    "php::php5-cgi": "Install the php5-cgi package",
+    "php": "Empty, use one of the other recipes",
+    "php::module_sqlite3": "Install the php5-sqlite3 package",
+    "php::module_ldap": "Install the php5-ldap package",
+    "php::module_gd": "Install the php5-gd package",
+    "php::module_apc": "Install the php5-apc package",
+    "php::module_memcache": "Install the php5-memcache package",
+    "php::module_mysql": "Install the php5-mysql package",
+    "php::module_fileinfo": "Install the php5-fileinfo package",
+    "php::module_curl": "Install the php5-curl package",
+    "php::pear": "Install the php-pear package",
+    "php::module_pgsql": "Install the php5-pgsql packag"
+  },
+  "groupings": {
+  },
+  "conflicting": {
+  },
+  "replacing": {
+  },
+  "description": "Installs and maintains php and php modules",
+  "providing": {
   }
+}
