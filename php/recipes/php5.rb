@@ -18,25 +18,29 @@
 # limitations under the License.
 #
 
-include_recipe "php::module_mysql"
-include_recipe "php::module_ldap"
-include_recipe "php::module_memcache"
-include_recipe "php::module_gd"
-include_recipe "php::module_pgsql"
-include_recipe "php::pear"
 
-cookbook_file value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => "/etc/php.ini"}, "default" => "/etc/php5/apache2/php.ini") do
-  source "apache2-php5.ini"
-  owner "root"
-  group "root"
-  mode 0644
-  notifies :restart, resources("service[apache2]"), :delayed
-end
-
-packages = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => %w(php php-cli php-Smarty)}, "default" => %w{php5 php5-cli smarty})
+packages = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => %w(php php-cli php5-dev)}, "default" => %w{php5 php5-cli php5-dev php5-common php5-suhosin})
 
 packages.each do |pkg|
   package pkg do
     action :upgrade
   end
+end
+
+node[:php][:type] = "apache2"
+
+include_recipe "php::pear"
+
+node[:php][:modules].each do |mod|
+  if mod == "enable"
+    include_recipe "php::module_#{mod}"
+  end
+end
+
+template "#{node[:php][:dir]}/#{node[:php][:type] }/php.ini" do
+   source "php_ini.erb"
+   owner "root"
+   group "root"
+   mode 0644
+   action :create
 end

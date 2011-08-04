@@ -1,9 +1,3 @@
-#
-# Cookbook Name:: skystack
-# Recipe:: php
-#
-# Copyright 2010, Skystack, Ltd.
-#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -17,12 +11,8 @@
 # limitations under the License.
 #
 
-
-=begin
-{"name":"skystack::php","order":"auto","cookbook":"php","methods":["add_php","edit_php","delete_php"],"symbol":":php","properties":{"modules":["apc":"boolean","curl":"boolean"],"is_enabled":"boolean"}}
-=end
-
-include_recipe "php::php5-cgi"
-
-
-
+template "/etc/cron.daily/automongobackup" do
+  source "automongobackup.sh.erb"
+  mode 0755
+  backup false
+end

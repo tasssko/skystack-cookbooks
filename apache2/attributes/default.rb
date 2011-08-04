@@ -45,6 +45,7 @@ end
 ###
 
 # General settings
+default[:apache][:mpm] = "worker"
 default[:apache][:listen_ports] = [ "80","443" ]
 default[:apache][:contact] = "ops@example.com"
 default[:apache][:timeout] = 300

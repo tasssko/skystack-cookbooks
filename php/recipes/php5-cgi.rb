@@ -19,17 +19,10 @@
 #
 
 
-include_recipe "php::module_mysql"
-include_recipe "php::module_sqlite3"
-include_recipe "php::module_memcache"
-include_recipe "php::module_gd"
-include_recipe "php::module_pgsql"
+packages = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => %w(php php-cli)}, "default" => %w{php5-cgi})
 
-case node[:platform]
-  when "centos", "redhat", "fedora", "suse"
-    #placeholder modify when available
-  when "debian" "ubuntu"
-    package "php5-cgi" do
-      action :upgrade
-    end
+packages.each do |pkg|
+  package pkg do
+    action :upgrade
+  end
 end

@@ -17,3 +17,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+packages = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => %w(php php-cli)}, "default" => %w{php5 php5-cli php5-dev php5-common php5-suhosin})
+
+packages.each do |pkg|
+  package pkg do
+    action :upgrade
+  end
+end
+
+include_recipe "php::pear"
+
+node[:php][:modules].each do |mod|
+  if mod == "enable"
+    include_recipe "php::module_#{mod}"
+  end
+end
+
+template "#{node[:php][:dir]}/#{node[:php][:type]}/php.ini" do
+   source "php_ini.erb"
+   owner "root"
+   group "root"
+   mode 0644
+   action :create
+end

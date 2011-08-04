@@ -50,6 +50,11 @@ attribute "apache",
   :description => "Hash of Apache attributes",
   :type => "hash"
 
+attribute "apache/mpm",
+    :display_name => "Apache MPM",
+    :description => "Apache MPM (Worker or Prefork)",
+    :default => "worker"
+    
 attribute "apache/dir",
   :display_name => "Apache Directory",
   :description => "Location for Apache configuration",
