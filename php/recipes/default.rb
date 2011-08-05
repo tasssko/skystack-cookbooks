@@ -36,7 +36,7 @@ node[:php][:modules].each do |mod|
 end
 
 template "#{node[:php][:dir]}/#{node[:php][:type]}/php.ini" do
-   source "php_ini.erb"
+   source "php.ini.erb"
    owner "root"
    group "root"
    mode 0644
