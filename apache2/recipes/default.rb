@@ -17,12 +17,7 @@
 # limitations under the License.
 #
 
-case node[:platform]
-  when "deban","ubuntu"
-    if node[:apache][:mpm] == "worker"
-      include_recipe "apache2::mod_fcgid"
-    end
-end
+
   
 package "apache2" do
   case node[:platform]
@@ -57,6 +52,13 @@ service "apache2" do
     "default" => { "default" => [:restart, :reload ] }
   )
   action :enable
+end
+
+case node[:platform]
+  when "deban","ubuntu"
+    if node[:apache][:mpm] == "worker"
+      include_recipe "apache2::mod_fcgid"
+    end
 end
 
 if platform?("centos", "redhat", "fedora", "suse")
