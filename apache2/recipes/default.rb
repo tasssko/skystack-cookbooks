@@ -17,14 +17,18 @@
 # limitations under the License.
 #
 
+case node[:platform]
+  when "deban","ubuntu"
+    if node[:apache][:mpm] == "worker"
+      include_recipe "apache2::mod_fcgid"
+    end
+end
+  
 package "apache2" do
   case node[:platform]
   when "centos","redhat","fedora","suse"
     package_name "httpd"
   when "debian","ubuntu"
-    if node[:apache][:mpm] == "worker"
-      include_recipe "apache2::mod_fcgid"
-    end
     package_name "apache2"
   end
   action :install
