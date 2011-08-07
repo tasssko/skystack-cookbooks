@@ -22,9 +22,9 @@
 {"name":"skystack::php","order":"auto","cookbook":"php","methods":["add_php_modules"],"symbol":":php","properties":{"mysql":"boolean","apc":"boolean","curl":"boolean","memcache":"boolean","gd":"boolean","ldap":"boolean","pgsql":"boolean","fpdf":"boolean","fileinfo":"boolean","sqlite3":"boolean"}}
 =end
 
-if node["attributes"]["php"]
-   node[:php] = node["attributes"]["php"]
-end
+#if node["attributes"]["php"]
+#   node[:php] = node["attributes"]["php"]
+#end
 
 include_recipe "php::php5"
 include_recipe "php::php5-cgi"
