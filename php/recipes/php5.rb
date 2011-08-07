@@ -31,8 +31,8 @@ node[:php][:type] = "apache2"
 
 include_recipe "php::pear"
 
-node[:php][:modules].each do |mod|
-  if mod == "enable"
+node[":php"].each do |mod|
+  if mod == "1"
     include_recipe "php::module_#{mod}"
   end
 end
