@@ -16,20 +16,16 @@
 #
 
 =begin
-{"name":"skystack::site","order":"before","cookbook":"apache2","methods":["add_site","edit_site","delete_site"],"symbol":":sites","properties":{"ssl":"boolean","server_name":"string","server_aliases":"string","document_root":"string","is_enabled":"boolean"}}
+{"name":"skystack::apache2","order":"before","cookbook":"apache2","methods":["add_site","edit_site","delete_site"],"symbol":":sites","properties":{"ssl":"boolean","server_name":"string","server_aliases":"string","document_root":"string","is_enabled":"boolean"}}
 =end
 
 node[:webserver] ="apache2"
 
-
 app = node.run_state[:current_app]
 
-if node[:webserver] == "apache2"
-  node[:apache][:listen_ports] = [ "80" ]
-  include_recipe "apache2"
-else
-  include_recipe "apache2"
-end
+node[:apache][:listen_ports] = [ "80" ]
+include_recipe "apache2"
+
 
 Chef::Log.info "skystack::site preparing to add virtual hosts and document roots."
 node[":sites"].each do |site|
