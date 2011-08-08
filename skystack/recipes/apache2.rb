@@ -27,13 +27,13 @@ node[:apache][:listen_ports] = [ "80" ]
 include_recipe "apache2"
 
 
-Chef::Log.info "skystack::site preparing to add virtual hosts and document roots."
+Chef::Log.info "skystack::apache2 preparing to add virtual hosts and document roots."
 node[":sites"].each do |site|
   if site["ssl"] == 1
     include_recipe "apache2::mod_ssl"
   end
 
-  Chef::Log.info "skystack::site adding #{site["server_name"]} to server"
+  Chef::Log.info "skystack::apache2 adding #{site["server_name"]} to server"
   web_app site["server_name"] do
     template "skybuild_php5_#{node[:webserver]}.erb"
     docroot site["document_root"]
@@ -41,7 +41,7 @@ node[":sites"].each do |site|
     server_aliases site["server_aliases"]
   end
 
-  Chef::Log.info "skystack::site creating #{site["document_root"]}"
+  Chef::Log.info "skystack::apache2 creating #{site["document_root"]}"
   directory site["document_root"] do
     owner "www-data"
     group "www-data"
@@ -59,7 +59,7 @@ node[":sites"].each do |site|
    end
 end
 
-Chef::Log.info "skystack::site disabling default Apache site."
+Chef::Log.info "skystack::apache2 disabling default Apache site."
 apache_site "000-default" do
   enable false
 end
