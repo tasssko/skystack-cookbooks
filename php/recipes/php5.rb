@@ -32,9 +32,31 @@ node[:php][:type] = "apache2"
 include_recipe "php::pear"
 
 node[":php"].each do |mod|
-  if mod == "1"
-    include_recipe "php::module_#{mod}"
-  end
+
+  if mod["mysql"] == 1
+      include_recipe "php::module_mysql"
+  elsif mod["curl"] == 1
+      include_recipe "php::module_curl"
+  elsif mod["gd"] == 1
+      include_recipe "php::module_gd" 
+  elsif mod["memcache"] == 1
+      include_recipe "php::module_memcache"
+  elsif mod["ldap"] == 1
+      include_recipe "php::module_ldap"
+  elsif mod["apc"] == 1
+      include_recipe "php::module_apc"
+  elsif mod["mongo"] == 1
+      include_recipe "php::module_mongo"
+  elsif mod["pgsql"] == 1
+      include_recipe "php::module_pgsql"
+  elsif mod["sqlite3"] == 1
+      include_recipe "php::module_sqlite3"
+  elsif mod["fpdf"] == 1
+      include_recipe "php::module_fpdf"
+  elsif mod["fileinfo"] == 1
+      include_recipe "php::module_fileinfo"
+  end       
+  
 end
 
 template "#{node[:php][:dir]}/#{node[:php][:type] }/php.ini" do
