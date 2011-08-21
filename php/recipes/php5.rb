@@ -33,27 +33,27 @@ include_recipe "php::pear"
 
 node[":php"].each do |mod|
 
-  if mod["mysql"] == 1
+  if mod["mysql"] == "1"
       include_recipe "php::module_mysql"
-  elsif mod["curl"] == 1
+  elsif mod["curl"] == "1"
       include_recipe "php::module_curl"
-  elsif mod["gd"] == 1
+  elsif mod["gd"] == "1"
       include_recipe "php::module_gd" 
-  elsif mod["memcache"] == 1
+  elsif mod["memcache"] == "1"
       include_recipe "php::module_memcache"
-  elsif mod["ldap"] == 1
+  elsif mod["ldap"] == "1"
       include_recipe "php::module_ldap"
-  elsif mod["apc"] == 1
+  elsif mod["apc"] == "1"
       include_recipe "php::module_apc"
-  elsif mod["mongo"] == 1
+  elsif mod["mongo"] == "1"
       include_recipe "php::module_mongo"
-  elsif mod["pgsql"] == 1
+  elsif mod["pgsql"] == "1"
       include_recipe "php::module_pgsql"
-  elsif mod["sqlite3"] == 1
+  elsif mod["sqlite3"] == "1"
       include_recipe "php::module_sqlite3"
-  elsif mod["fpdf"] == 1
+  elsif mod["fpdf"] == "1"
       include_recipe "php::module_fpdf"
-  elsif mod["fileinfo"] == 1
+  elsif mod["fileinfo"] == "1"
       include_recipe "php::module_fileinfo"
   end       
   
