@@ -20,5 +20,5 @@
 include_recipe "collectd"
 
 collectd_plugin "network" do
-  options :server=>node[:skystack_monitor_fqdn]
+  options :server=>node[:ss_monitor_fqdn]
 end

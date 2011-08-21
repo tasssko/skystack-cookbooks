@@ -24,4 +24,4 @@ default[:collectd][:interval] = 10
 default[:collectd][:read_threads] = 5
 
 default[:collectd][:collectd_web][:path] = "/srv/collectd_web"
-default[:collectd][:collectd_web][:hostname] = node[:skystack_fqdn]
+default[:collectd][:collectd_web][:hostname] = node[:fqdn]

@@ -6,7 +6,7 @@
 # You should also read /usr/share/doc/collectd/README.Debian.plugins before
 # enabling any more plugins.
 
-Hostname "<%= @node[:skystack_fqdn] %>"
+Hostname "<%= @node[:ss_server_fqdn] %>"
 FQDNLookup false
 BaseDir "<%= @node[:collectd][:base_dir] %>"
 PluginDir "<%= @node[:collectd][:plugin_dir] %>"
