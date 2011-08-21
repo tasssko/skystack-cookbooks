@@ -31,33 +31,57 @@ node[:php][:type] = "apache2"
 
 include_recipe "php::pear"
 
-node[":php"].each do |mod|
 
-  if mod["mysql"] == "1"
-      include_recipe "php::module_mysql"
-  elsif mod["curl"] == "1"
-      include_recipe "php::module_curl"
-  elsif mod["gd"] == "1"
-      include_recipe "php::module_gd" 
-  elsif mod["memcache"] == "1"
-      include_recipe "php::module_memcache"
-  elsif mod["ldap"] == "1"
-      include_recipe "php::module_ldap"
-  elsif mod["apc"] == "1"
-      include_recipe "php::module_apc"
-  elsif mod["mongo"] == "1"
-      include_recipe "php::module_mongo"
-  elsif mod["pgsql"] == "1"
-      include_recipe "php::module_pgsql"
-  elsif mod["sqlite3"] == "1"
-      include_recipe "php::module_sqlite3"
-  elsif mod["fpdf"] == "1"
-      include_recipe "php::module_fpdf"
-  elsif mod["fileinfo"] == "1"
-      include_recipe "php::module_fileinfo"
-  end       
+
+if node[:php][:modules][:mysql]
+    include_recipe "php::module_mysql"     
+    
+elsif node[:php][:modules][:curl]
+    include_recipe "php::module_curl"
+    
+elsif node[:php][:modules][:gd]
+    include_recipe "php::module_gd"
+    
+elsif node[:php][:modules][:memcache]
+    include_recipe "php::module_memcache"
+    
+elsif node[:php][:modules][:ldap]
+    include_recipe "php::module_ldap"
+    
+elsif node[:php][:modules][:apc]
+    include_recipe "php::module_apc"
+   
+elsif node[:php][:modules][:mongo]
+    include_recipe "php::module_mongo"
   
+elsif node[:php][:modules][:pgsql]
+    include_recipe "php::module_pgsql"
+    
+elsif node[:php][:modules][:sqlite3]
+    include_recipe "php::module_sqlite3"
+
+elsif node[:php][:modules][:fpdf]
+    include_recipe "php::module_fpdf"
+
+elsif node[:php][:modules][:xsl]
+    include_recipe "php::module_xsl"
+
+elsif node[:php][:modules][:fileinfo]
+    include_recipe "php::module_fileinfo"
+         
+elsif node[:php][:modules][:geoip]
+    include_recipe "php::module_geoip"
+    
+elsif node[:php][:modules][:imagick]
+    include_recipe "php::module_imagick"
+
+elsif node[:php][:modules][:xdebug]
+    include_recipe "php::module_xdebug"
+      
+elsif node[:php][:modules][:mcrypt]
+    include_recipe "php::module_mcrypt"
 end
+
 
 template "#{node[:php][:dir]}/#{node[:php][:type] }/php.ini" do
    source "php.ini.erb"
