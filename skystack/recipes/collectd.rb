@@ -17,3 +17,4 @@
 #
 
 include_recipe "collectd_plugins"
+
