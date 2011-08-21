@@ -2,7 +2,7 @@
 # Cookbook Name:: collectd
 # Recipe:: client
 #
-# Copyright 2010, Atari, Inc
+# Copyright 2010, Skystack, Limited
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,6 +19,13 @@
 
 include_recipe "collectd"
 
-collectd_plugin "network" do
-  options :server=>node[:ss_monitor_fqdn]
+template "/etc/collectd/plugins/network.conf" do
+  source "plugin_network.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  variables(
+    :collector => node[:ss_monitor_fqdn],
+    :port => node[:collectd][:port],
+  )
 end
