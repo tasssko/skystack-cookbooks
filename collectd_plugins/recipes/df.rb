@@ -20,7 +20,6 @@
 include_recipe "collectd"
 
 collectd_plugin "df" do
-  options(:report_reserved=>false,
-          "FSType"=>["proc", "sysfs", "fusectl", "debugfs", "securityfs", "devtmpfs", "devpts", "tmpfs"],
+  options("FSType"=>["proc", "sysfs", "fusectl", "debugfs", "securityfs", "devtmpfs", "devpts", "tmpfs"],
           :ignore_selected=>true)
 end
