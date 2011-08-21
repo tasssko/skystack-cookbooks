@@ -26,6 +26,6 @@ template "/etc/collectd/plugins/network.conf" do
   mode "0644"
   variables(
     :collector => node[:ss_monitor_fqdn],
-    :port => node[:collectd][:port],
+    :port => node[:collectd][:port]
   )
 end
