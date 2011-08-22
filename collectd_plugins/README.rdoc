@@ -9,7 +9,6 @@ This cookbook has only been tested on Ubuntu 10.04.
 = USAGE:
 
 A number of recipes for standard plugins are available:
-[collectd_plugins::rrdtool] Output to RRD database files.
 [collectd_plugins::syslog] Log errors to syslog.
 [collectd_plugins::cpu] CPU usage.
 [collectd_plugins::df] Free space on disks.
@@ -17,17 +16,17 @@ A number of recipes for standard plugins are available:
 [collectd_plugins::interface] Network I/O operations.
 [collectd_plugins::memory] Memory usage.
 [collectd_plugins::swap] Swap file usage.
+[collectd_plugins::load] Server load.
 
 It is recommended to always enable the first two (rrdtool and syslog), but the others are entirely optional. For convenience, the +collectd_plugins+ default recipe will include all of these.
 
-== Redis:
 
-A plugin to monitor Redis[http://redis.io/] is included as collectd_plugins::redis. This recipe requires that you be using our redis cookbook[https://github.com/AtariTech/cookbooks/tree/master/redis]
-for your servers, but can be trivially modified to look for a different recipe or role name.
 
 = LICENSE & AUTHOR:
 
-Author:: Noah Kantrowitz (<nkantrowitz@crypticstudios.com>)
+Author:: Tass Skoudros (<tass@skystack.com>)
+
+Original Author:: Noah Kantrowitz (<nkantrowitz@crypticstudios.com>)
 Copyright:: 2010, Atari, Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
