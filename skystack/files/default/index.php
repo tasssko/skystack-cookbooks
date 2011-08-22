@@ -3,10 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>Made by Skystack</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
-<link rel="stylesheet" type="text/css" href="http://my.skystack.local/css/base.css" />
-<link rel="stylesheet" type="text/css" href="http://my.skystack.local/css/redmond/jquery-ui-1.7.1.custom.css" />
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
 <style>
@@ -22,10 +19,8 @@
     
 <div id="landing" class="ui-corner-all" style="">
 	<div class="content"><br/>
-	<h3>The Skystack way, is to automate and save you time</h3>
-	<p>This server was crafted by Skystack, and some excellent open source tools. We hope you enjoy this server as much as we enjoyed building it.</p>
-
-	<p>For more On-Demand Cloud services visit our website <a href="http://skystack.com" title="Skystack.com">Skystack.com</a></p>	
+	<p>This server was crafted by Skystack, with the help of some excellent open source tools. We hope you enjoy this server as much as we enjoyed building it.</p>
+	<p>For more on Skystack visit our website <a href="http://www.skystack.com" title="Skystack.com">Skystack.com</a></p>	
 	
 	<?php
 	
