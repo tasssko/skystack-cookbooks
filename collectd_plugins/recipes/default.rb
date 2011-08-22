@@ -27,6 +27,7 @@ include_recipe "collectd_plugins::disk"
 include_recipe "collectd_plugins::interface"
 include_recipe "collectd_plugins::memory"
 include_recipe "collectd_plugins::swap"
+include_recipe "collectd_plugins::load"
 
 if node[:collectd][:client] 
   include_recipe "collectd::client"
