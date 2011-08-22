@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: collectd_plugins
-# Recipe:: cpu
+# Recipe:: load
 #
-# Copyright 2010, Atari, Inc
+# Copyright 2010, Skystack, Limited
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
