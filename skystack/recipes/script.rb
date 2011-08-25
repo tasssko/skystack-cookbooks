@@ -47,7 +47,7 @@ node[":scripts"].each do |script|
     if [ "$SS_BASE" == "my.skystack.local" ]; then
     	HTTP=http
     elif [ "$SS_BASE" == "staging.my.skystack.com" ]; then
-    	HTTP=http
+    	HTTP=https
     else
     	HTTP=https
     fi
