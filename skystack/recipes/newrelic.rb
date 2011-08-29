@@ -17,13 +17,8 @@
 # limitations under the License.
 #
 
-=begin
-{"name":"skystack::newrelic","order":"after","cookbook":"newrelic","methods":["install","update","pause"],"symbol":":newrelic","properties":{"appname":"string","php":"boolean","ruby":"boolean"}}
-=end
 
-
-
-node[":newrelic"].each do |nr|
+node["newrelic"].each do |nr|
   node[:newrelic][:appname] = nr["appname"]
   node[:newrelic][:license_key] = nr["license_key"]
   
@@ -33,9 +28,9 @@ node[":newrelic"].each do |nr|
     
     include_recipe "newrelic::php"
   
-  elsif (nr['ruby'] == "1")
+#  elsif (nr['ruby'] == "1")
   
-    include_recipe "newrelic::ruby"
+#    include_recipe "newrelic::ruby"
   
   end
   

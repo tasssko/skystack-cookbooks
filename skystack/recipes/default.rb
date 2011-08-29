@@ -33,5 +33,8 @@ require 'ohai'
 end
 
 node[:system][:size] = size
+node[:ss_server_fqdn] = node["skystack_fqdn"]
+node[:ss_monitor_fqdn] = node["skystack_monitor_fqdn"]
+
 require_recipe "apt"
 include_recipe "build-essential"

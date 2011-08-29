@@ -18,11 +18,7 @@
 #
 
 
-=begin
-{"name":"skystack::php","order":"auto","cookbook":"php","methods":["add_php_modules"],"symbol":":php","properties":{"mysql":"boolean","mcrypt":"boolean","xsl":"boolean","apc":"boolean","curl":"boolean","memcache":"boolean","imagick":"boolean","ffmpeg":"boolean","geoip":"boolean","xdebug":"boolean","gd":"boolean","ldap":"boolean","pgsql":"boolean","fpdf":"boolean","fileinfo":"boolean","sqlite3":"boolean"}}
-=end
-
-node[":php"].each do |mod|
+node["php"].each do |mod|
 
   if mod["mysql"] == "1"
    node[:php][:modules][:mysql] = true

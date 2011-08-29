@@ -16,14 +16,10 @@
 # limitations under the License.
 #
 
-=begin
-{"name":"skystack::script","order":"after","methods":["run_script","edit_script","delete_script"],"symbol":":scripts","properties":{"skyscript_id":"string","resource":"string"}}
-=end
-
 script = node.run_state[:current_app]
 
 
-node[":scripts"].each do |script|
+node["scripts"].each do |script|
   Chef::Log.info "skystack::script telling chef to run this script #{script["skyscript_id"]}"
   script["ext"] = File.extname(script["resource"])
   execute "run_skyscript_#{script["skyscript_id"]}" do

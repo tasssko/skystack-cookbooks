@@ -16,9 +16,6 @@
 # limitations under the License.
 #
 
-=begin
-{"name":"skystack::mysql","order":"auto","cookbook":"mysql","methods":["add_database","edit_database","delete_database"],"symbol":":dbs","properties":{"name":"string","user":"string","permissions":["SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP"]}}
-=end
 
 class Chef::Recipe
  include Opscode::OpenSSL::Password
@@ -42,7 +39,7 @@ ruby_block "fetch_root_password" do
   only_if do File.exists?( mysql_conf ) end
 end
 
-node[":dbs"].each do |db|
+node["databases"].each do |db|
    new_password = secure_password
    mysql_database "create_#{db["name"]}" do
       root_username "root"
