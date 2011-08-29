@@ -19,7 +19,7 @@
 
 
 node["newrelic"].each do |nr|
-  node[:newrelic][:appname] = nr["appname"]
+  node[:newrelic][:appname] = nr["app_name"]
   node[:newrelic][:license_key] = nr["license_key"]
   
   include_recipe "newrelic::default"
