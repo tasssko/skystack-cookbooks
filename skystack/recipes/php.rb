@@ -20,8 +20,8 @@
 include_recipe "python::package"
 include_recipe "php::php5-cgi"
 
-node["php"].each do |mod|
-  node[:php][:modules][mod["extensions"].to_sym] = true
+node["php"]['extensions'].each do |ext|
+  node[:php][:modules][ext.to_sym] = true
 end
 
 #if node["attributes"]["php"]
