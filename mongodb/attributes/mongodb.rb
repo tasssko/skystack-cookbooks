@@ -4,7 +4,7 @@ default[:mongodb][:username]    = "mongo-admin"
 default[:mongodb][:password]    = secure_password
 
 default[:mongodb][:version]           = "1.8.3 "
-default[:mongodb][:source]            = "http://fastdl.mongodb.org/linux/mongodb-linux-#{node[:kernel][:machine]}-#{mongodb[:version]}.tgz"
+default[:mongodb][:source]            = "http://downloads.mongodb.org/src/mongodb-src-r#{mongodb[:version]}.tar.gz"
 default[:mongodb][:i686][:checksum]   = "3ce4485494806648404e1ee96c223ec6"
 default[:mongodb][:x86_64][:checksum] = "73df4aa4be049d733666cebf8f123b55"
 
