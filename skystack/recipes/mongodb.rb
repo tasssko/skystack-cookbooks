@@ -19,17 +19,6 @@
 db = node.run_state[:current_app]
 include_recipe "mongodb::source"
 
-mongo_conf = "/opt/skystack/bootstrapper/etc/.mongodb.shadow"
-
-ruby_block "save_password" do
-  block do
-    open(mongo_conf, 'w') do |f| f << "#{node[:mongodb][:username]}/#{node[:mongodb][:password]}" end
-  end
-  action :create
-  only_if do ! File.exists?( mongo_conf ) end
-end
-
-end
 
 
   
