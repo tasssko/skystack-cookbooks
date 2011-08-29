@@ -32,7 +32,7 @@ end
 
 remote_file "/tmp/mongodb-#{node[:mongodb][:version]}.tar.gz" do
   source node[:mongodb][:source]
-  checksum node[:mongodb][platform][:checksum]
+ # checksum node[:mongodb][platform][:checksum]
   action :create_if_missing
 end
 
