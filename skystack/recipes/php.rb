@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe "python::package"
-include_recipe "php::php5-cgi"
 
 node["php"]['extensions'].each do |ext|
   node[:php][:modules][ext.to_sym] = true
