@@ -39,7 +39,7 @@ ruby_block "fetch_root_password" do
   only_if do File.exists?( mysql_conf ) end
 end
 
-node["databases"].each do |db|
+node["mysql_databases"].each do |db|
    new_password = secure_password
    mysql_database "create_#{db["name"]}" do
       root_username "root"
