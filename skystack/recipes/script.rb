@@ -43,12 +43,12 @@ node["scripts"].each do |script|
     if [ "$SS_BASE" == "my.skystack.local" ]; then
     	HTTP=http
     elif [ "$SS_BASE" == "staging.my.skystack.com" ]; then
-    	HTTP=http
+    	HTTP=https
     else
     	HTTP=https
     fi
   
-    curl -o /tmp/#{script["skyscript_id"]}_part -u $SS_APIUSER:$SS_APITOKEN $HTTP://$SS_BASE/$SS_ALIAS/scripts/#{script["skyscript_id"]}#{script["ext"]}
+    curl -k -o /tmp/#{script["skyscript_id"]}_part -u $SS_APIUSER:$SS_APITOKEN $HTTP://$SS_BASE/$SS_ALIAS/scripts/#{script["skyscript_id"]}#{script["ext"]}
     tr -d '\015\032' < /tmp/#{script["skyscript_id"]}_part > /tmp/#{script["skyscript_id"]}#{script["ext"]}
     chmod +x /tmp/#{script["skyscript_id"]}#{script["ext"]}
     EOH
