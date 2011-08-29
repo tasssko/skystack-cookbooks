@@ -17,61 +17,11 @@
 # limitations under the License.
 #
 
+include_recipe "python::package"
+include_recipe "php::php5-cgi"
 
 node["php"].each do |mod|
-
-  if mod["mysql"] == "1"
-   node[:php][:modules][:mysql] = true
-  
-  elsif mod["curl"] == "1"
-   node[:php][:modules][:curl] = true
-  
-  elsif mod["mcrypt"] == "1"
-   node[:php][:modules][:mcrypt] = true           
-  
-  elsif mod["imagick"] == "1"
-   node[:php][:modules][:imagick] = true
-  
-  elsif mod["gd"] == "1"
-   node[:php][:modules][:gd] = true
-  
-  elsif mod["memcache"] == "1"
-   node[:php][:modules][:memcache] = true
-
-  elsif mod["xdebug"] == "1"
-   node[:php][:modules][:xdebug] = true
-
-  elsif mod["ffmpeg"] == "1"
-   node[:php][:modules][:ffmpeg] = true
-
-  elsif mod["geoip"] == "1"
-   node[:php][:modules][:geoip] = true
-  
-  elsif mod["xsl"] == "1"
-   node[:php][:modules][:xsl] = true
-       
-  elsif mod["ldap"] == "1"
-   node[:php][:modules][:ldap] = true
-  
-  elsif mod["apc"] == "1"
-   node[:php][:modules][:apc] = true
-  
-  elsif mod["mongo"] == "1"
-   node[:php][:modules][:mongo] = true
-  
-  elsif mod["pgsql"] == "1"
-   node[:php][:modules][:pgsql] = true
-  
-  elsif mod["sqlite3"] == "1"
-   node[:php][:modules][:sqlite3] = true
-  
-  elsif mod["fpdf"] == "1"
-   node[:php][:modules][:fpdf] = true
-  
-  elsif mod["fileinfo"] == "1"
-   node[:php][:modules][:fileinfo] = true
-  end       
-  
+  node[:php][:modules][mod["extensions"].to_sym] = true
 end
 
 #if node["attributes"]["php"]
