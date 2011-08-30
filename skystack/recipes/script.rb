@@ -38,16 +38,10 @@ node["scripts"].each do |script|
     export SS_ALIAS=`awk '/SS_ALIAS/ {print $2}' FS=\= $SKYSTACK_PATH/etc/userdata.conf` > /dev/null 2>&1
     export SS_APITOKEN=`awk '/SS_APITOKEN/ {print $2}' FS=\= $SKYSTACK_PATH/etc/userdata.conf` > /dev/null 2>&1
     export SS_APIUSER=`awk '/SS_APIUSER/ {print $2}' FS=\= $SKYSTACK_PATH/etc/userdata.conf` > /dev/null 2>&1
-    export SS_BASE=`awk '/SS_BASE/ {print $2}' FS=\= $SKYSTACK_PATH/etc/userdata.conf` > /dev/null 2>&1 
+    export SS_BASE=`awk '/SS_BASE/ {print $2}' FS=\= $SKYSTACK_PATH/etc/userdata.conf` > /dev/null 2>&1
 
-    if [ "$SS_BASE" == "my.skystack.local" ]; then
-    	HTTP=http
-    elif [ "$SS_BASE" == "staging.my.skystack.com" ]; then
-    	HTTP=https
-    else
-    	HTTP=https
-    fi
-  
+    HTTP=https
+
     curl -k -o /tmp/#{script["skyscript_id"]}_part -u $SS_APIUSER:$SS_APITOKEN $HTTP://$SS_BASE/$SS_ALIAS/scripts/#{script["skyscript_id"]}#{script["ext"]}
     tr -d '\015\032' < /tmp/#{script["skyscript_id"]}_part > /tmp/#{script["skyscript_id"]}#{script["ext"]}
     chmod +x /tmp/#{script["skyscript_id"]}#{script["ext"]}
