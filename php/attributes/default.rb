@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-set[:php][:dir]      = "/etc/php5"
-set[:php][:type]     = "cgi"
+set_unless[:php][:dir]      = "/etc/php5"
+set_unless[:php][:type]     = "cgi"
 
 # General settings
 set_unless[:php][:error_reporting]     = "E_ALL & ~E_DEPRECATED"
@@ -31,14 +31,24 @@ set_unless[:php][:date_timezone]       = "Europe/London"
 set_unless[:php][:php_path]            = "/etc/php5"
 
 
-set_unless[:php][:modules][:gd]         = "enable"
-set_unless[:php][:modules][:curl]       = "enable"
-set_unless[:php][:modules][:xsl]        = "enable"
-set_unless[:php][:modules][:mhash]      = "enable"
-set_unless[:php][:modules][:apc]        = "disable"
-set_unless[:php][:modules][:mysql]      = "disable"
-set_unless[:php][:modules][:sqlite3]    = "disable"
-set_unless[:php][:modules][:fileinfo]   = "disable"
-set_unless[:php][:modules][:pgsql]      = "disable"
-set_unless[:php][:modules][:ldap]       = "disable"
-set_unless[:php][:modules][:fpdf]       = "disable"
+set_unless['php']['extensions']['gd']         = true
+set_unless['php']['extensions']['curl']       = true
+set_unless['php']['extensions']['xsl']        = true
+set_unless['php']['extensions']['mcrypt']     = true
+set_unless['php']['extensions']['apc']        = true
+
+set_unless['php']['extensions']['xdebug']     = false
+set_unless['php']['extensions']['geoip']      = false
+set_unless['php']['extensions']['ffmpeg']     = false
+set_unless['php']['extensions']['imagick']    = false
+
+set_unless['php']['extensions']['mysql']      = false
+set_unless['php']['extensions']['memcache']   = false
+set_unless['php']['extensions']['mongo']      = false
+set_unless['php']['extensions']['sqlite3']    = false
+set_unless['php']['extensions']['fileinfo']   = false
+set_unless['php']['extensions']['pgsql']      = false
+set_unless['php']['extensions']['ldap']       = false
+set_unless['php']['extensions']['fpdf']       = false
+
+
