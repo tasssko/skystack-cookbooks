@@ -18,14 +18,14 @@
 #
 
 
-node["newrelic"].each do |nr|
-  node[:newrelic][:appname] = nr["app_name"]
-  node[:newrelic][:license_key] = nr["license_key"]
+  #node[:newrelic][:appname] = nr["app_name"]
+  #node[:newrelic][:license_key] = nr["license_key"]
+  #node[:newrelic][:version] = nr["version"]
   
   include_recipe "newrelic::default"
   
-  if(nr['php'] == "1")
-    
+  if(node[:newrelic][:php] == "1")
+      
     include_recipe "newrelic::php"
   
 #  elsif (nr['ruby'] == "1")
@@ -34,4 +34,4 @@ node["newrelic"].each do |nr|
   
   end
   
-end
+#end
