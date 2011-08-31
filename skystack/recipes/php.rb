@@ -18,7 +18,7 @@
 #
 
 
-node['php'].each do |key, value|
+node['load_php'].each do |key, value|
   node[:php][:modules][value.to_sym] = true
 end
 
