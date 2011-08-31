@@ -19,7 +19,9 @@
 
 
 node['load_php'].each do |key, value|
-  node[:php][:modules][value.to_sym] = true
+  if !value.nil?
+    node[:php][:modules][value.to_sym] = true
+  end
 end
 
 #if node["attributes"]["php"]
