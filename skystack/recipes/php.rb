@@ -18,8 +18,10 @@
 #
 
 
-node["php"]['extensions'].each do |ext|
-  node[:php][:modules][ext.to_sym] = true
+node['load_php'].each do |key, value|
+  if !value.nil?
+    node[:php][:modules][value.to_sym] = true
+  end
 end
 
 #if node["attributes"]["php"]
