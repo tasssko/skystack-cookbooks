@@ -31,24 +31,24 @@ set_unless[:php][:date_timezone]       = "Europe/London"
 set_unless[:php][:php_path]            = "/etc/php5"
 
 
-set_unless['php']['extensions']['gd']         = true
-set_unless['php']['extensions']['curl']       = true
-set_unless['php']['extensions']['xsl']        = true
-set_unless['php']['extensions']['mcrypt']     = true
-set_unless['php']['extensions']['apc']        = true
+set_unless[:php][:modules][:gd]         = true
+set_unless[:php][:modules][:curl]       = true
+set_unless[:php][:modules][:xsl]        = true
+set_unless[:php][:modules][:mcrypt]     = true
+set_unless[:php][:modules][:apc]        = true
 
-set_unless['php']['extensions']['xdebug']     = false
-set_unless['php']['extensions']['geoip']      = false
-set_unless['php']['extensions']['ffmpeg']     = false
-set_unless['php']['extensions']['imagick']    = false
+set_unless[:php][:modules][:xdebug]     = false
+set_unless[:php][:modules][:geoip]      = false
+set_unless[:php][:modules][:ffmpeg]     = false
+set_unless[:php][:modules][:imagick]    = false
 
-set_unless['php']['extensions']['mysql']      = false
-set_unless['php']['extensions']['memcache']   = false
-set_unless['php']['extensions']['mongo']      = false
-set_unless['php']['extensions']['sqlite3']    = false
-set_unless['php']['extensions']['fileinfo']   = false
-set_unless['php']['extensions']['pgsql']      = false
-set_unless['php']['extensions']['ldap']       = false
-set_unless['php']['extensions']['fpdf']       = false
+set_unless[:php][:modules][:mysql]      = false
+set_unless[:php][:modules][:memcache]   = false
+set_unless[:php][:modules][:mongo]      = false
+set_unless[:php][:modules][:sqlite3]    = false
+set_unless[:php][:modules][:fileinfo]   = false
+set_unless[:php][:modules][:pgsql]      = false
+set_unless[:php][:modules][:ldap]       = false
+set_unless[:php][:modules][:fpdf]       = false
 
 
