@@ -18,14 +18,16 @@
 # limitations under the License.
 #
 
+node[:php][:type] = "cgi"
 
 package "php5-cgi" do
     action :upgrade
 end
 
-directory '/etc/php5/cgi' do
-  owner "root"
-  group "root"
-  mode "0755"
-  action :create
+template "#{node[:php][:dir]}/#{node[:php][:type] }/php.ini" do
+   source "php.ini.erb"
+   owner "root"
+   group "root"
+   mode 0644
+   action :create
 end
