@@ -30,7 +30,7 @@ end
 include_recipe "php::pear"
 
 node[:php][:modules].each do |mod|
-  if mod == "enable"
+  if mod == 1
     include_recipe "php::module_#{mod}"
   end
 end
