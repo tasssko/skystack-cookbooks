@@ -19,7 +19,7 @@
 #
 
 
-packages = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => %w(php php-cli)}, "default" => %w{php5 php5-cli php5-dev php5-common php5-suhosin})
+packages = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => %w(php php-cli)}, "default" => %w{php5 php5-cli php5-cgi php5-dev php5-common php5-suhosin})
 
 packages.each do |pkg|
   package pkg do
