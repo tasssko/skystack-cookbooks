@@ -17,11 +17,19 @@
 # limitations under the License.
 #
 
+node['skystack_php'].each do |php|
+
+  php["extensions"].each do |value|
+   puts "value:#{value}"
+   if !value.nil?
+     node.default[:php][:modules][value.to_sym] = 1
+   end
+  end
+
+end
+
 include_recipe "php"
 include_recipe "php::php5-cgi"
 
-node['skystack_php']['extensions'].each do |key, value|
-  if !value.nil?
-    node.default[:php][:modules][value.to_sym] = 1
-  end
-end
+
+
