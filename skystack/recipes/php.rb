@@ -18,9 +18,9 @@
 #
 
 
-node['load_php'].each do |key, value|
+node['php']['extensions'].each do |key, value|
   if !value.nil?
-    node[:php][:modules][value.to_sym] = true
+    node.default[:php][:modules][value.to_sym] = true
   end
 end
 
