@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe "php::php5"
+include_recipe "php"
 include_recipe "php::php5-cgi"
 
 node['skystack_php']['extensions'].each do |key, value|
