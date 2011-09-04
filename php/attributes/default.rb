@@ -18,7 +18,7 @@
 #
 
 set_unless[:php][:dir]      = "/etc/php5"
-set_unless[:php][:type]     = "apache"
+set_unless[:php][:type]     = "apache2"
 
 # General settings
 set_unless[:php][:error_reporting]     = "E_ALL & ~E_DEPRECATED"
