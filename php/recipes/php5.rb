@@ -27,8 +27,10 @@ packages.each do |pkg|
   end
 end
 
-node[:php][:modules].each |mod|
-  include_recipe "php::module_#{mod}"  
+node[:php][:modules].each do |mod|
+  if mod == "enable"
+    include_recipe "php::module_#{mod}"
+  end
 end
 
 template "#{node[:php][:dir]}/#{node[:php][:type] }/php.ini" do
