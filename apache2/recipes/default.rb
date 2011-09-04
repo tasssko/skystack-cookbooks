@@ -24,7 +24,8 @@ package "apache2" do
   when "centos","redhat","fedora","suse"
     package_name "httpd"
   when "debian","ubuntu"
-    package_name "apache2"
+    #package_name "apache2"
+    package_name "apache2-mpm-#{node[:apache][:mpm]}"
   end
   action :install
 end
