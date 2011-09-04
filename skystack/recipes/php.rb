@@ -17,19 +17,21 @@
 # limitations under the License.
 #
 
-node['skystack_php'].each do |php|
 
+
+include_recipe "php::php5"
+include_recipe "php::php5-cgi"
+
+apache_mod "php5" do
+  enable false
+end
+
+node['skystack_php'].each do |php|
   php["extensions"].each do |value|
 
    if !value.nil?
-     node.default[:php][:modules][value.to_sym] = 1
+     include_recipe "php::module_#{mod}"
    end
+   
   end
-
 end
-
-include_recipe "php"
-include_recipe "php::php5-cgi"
-
-
-
