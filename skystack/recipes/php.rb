@@ -20,7 +20,7 @@
 node['skystack_php'].each do |php|
 
   php["extensions"].each do |value|
-   puts "value:#{value}"
+
    if !value.nil?
      node.default[:php][:modules][value.to_sym] = 1
    end
