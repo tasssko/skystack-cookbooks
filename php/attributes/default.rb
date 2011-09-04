@@ -31,22 +31,22 @@ set_unless[:php][:date_timezone]       = "Europe/London"
 set_unless[:php][:php_path]            = "/etc/php5"
 
 
-set_unless[:php][:modules][:gd]         = true
-set_unless[:php][:modules][:curl]       = true
-set_unless[:php][:modules][:xsl]        = true
-set_unless[:php][:modules][:mcrypt]     = true
-set_unless[:php][:modules][:apc]        = false
-set_unless[:php][:modules][:xdebug]     = false
-set_unless[:php][:modules][:geoip]      = false
-set_unless[:php][:modules][:ffmpeg]     = false
-set_unless[:php][:modules][:imagick]    = false
-set_unless[:php][:modules][:mysql]      = false
-set_unless[:php][:modules][:memcache]   = false
-set_unless[:php][:modules][:mongo]      = false
-set_unless[:php][:modules][:sqlite3]    = false
-set_unless[:php][:modules][:fileinfo]   = false
-set_unless[:php][:modules][:pgsql]      = false
-set_unless[:php][:modules][:ldap]       = false
-set_unless[:php][:modules][:fpdf]       = false
+set_unless[:php][:modules][:gd]         = "enable"
+set_unless[:php][:modules][:curl]       = "enable"
+set_unless[:php][:modules][:xsl]        = "enable"
+set_unless[:php][:modules][:mcrypt]     = "enable"
+set_unless[:php][:modules][:apc]        = "disable"
+set_unless[:php][:modules][:xdebug]     = "disable"
+set_unless[:php][:modules][:geoip]      = "disable"
+set_unless[:php][:modules][:ffmpeg]     = "disable"
+set_unless[:php][:modules][:imagick]    = "disable"
+set_unless[:php][:modules][:mysql]      = "disable"
+set_unless[:php][:modules][:memcache]   = "disable"
+set_unless[:php][:modules][:mongo]      = "disable"
+set_unless[:php][:modules][:sqlite3]    = "disable"
+set_unless[:php][:modules][:fileinfo]   = "disable"
+set_unless[:php][:modules][:pgsql]      = "disable"
+set_unless[:php][:modules][:ldap]       = "disable"
+set_unless[:php][:modules][:fpdf]       = "disable"
 
 
