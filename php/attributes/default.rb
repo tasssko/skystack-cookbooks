@@ -35,13 +35,11 @@ set_unless[:php][:modules][:gd]         = true
 set_unless[:php][:modules][:curl]       = true
 set_unless[:php][:modules][:xsl]        = true
 set_unless[:php][:modules][:mcrypt]     = true
-set_unless[:php][:modules][:apc]        = true
-
+set_unless[:php][:modules][:apc]        = false
 set_unless[:php][:modules][:xdebug]     = false
 set_unless[:php][:modules][:geoip]      = false
 set_unless[:php][:modules][:ffmpeg]     = false
 set_unless[:php][:modules][:imagick]    = false
-
 set_unless[:php][:modules][:mysql]      = false
 set_unless[:php][:modules][:memcache]   = false
 set_unless[:php][:modules][:mongo]      = false

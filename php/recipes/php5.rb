@@ -19,7 +19,7 @@
 #
 
 
-packages = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => %w(php php-cli php5-dev)}, "default" => %w{php5 php5-cli php5-dev php5-common php5-suhosin})
+packages = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => %w(php php-cli php5-dev)}, "default" => %w{php5 php5-cli php5-dev php5-common php::pear php5-suhosin})
 
 packages.each do |pkg|
   package pkg do
@@ -27,61 +27,9 @@ packages.each do |pkg|
   end
 end
 
-node[:php][:type] = "apache2"
-
-include_recipe "php::pear"
-
-
-
-if node[:php][:modules][:mysql]
-    include_recipe "php::module_mysql"     
-    
-elsif node[:php][:modules][:curl]
-    include_recipe "php::module_curl"
-    
-elsif node[:php][:modules][:gd]
-    include_recipe "php::module_gd"
-    
-elsif node[:php][:modules][:memcache]
-    include_recipe "php::module_memcache"
-    
-elsif node[:php][:modules][:ldap]
-    include_recipe "php::module_ldap"
-    
-elsif node[:php][:modules][:apc]
-    include_recipe "php::module_apc"
-   
-elsif node[:php][:modules][:mongo]
-    include_recipe "php::module_mongo"
-  
-elsif node[:php][:modules][:pgsql]
-    include_recipe "php::module_pgsql"
-    
-elsif node[:php][:modules][:sqlite3]
-    include_recipe "php::module_sqlite3"
-
-elsif node[:php][:modules][:fpdf]
-    include_recipe "php::module_fpdf"
-
-elsif node[:php][:modules][:xsl]
-    include_recipe "php::module_xsl"
-
-elsif node[:php][:modules][:fileinfo]
-    include_recipe "php::module_fileinfo"
-         
-elsif node[:php][:modules][:geoip]
-    include_recipe "php::module_geoip"
-    
-elsif node[:php][:modules][:imagick]
-    include_recipe "php::module_imagick"
-
-elsif node[:php][:modules][:xdebug]
-    include_recipe "php::module_xdebug"
-      
-elsif node[:php][:modules][:mcrypt]
-    include_recipe "php::module_mcrypt"
+node[:php][:modules].each |mod|
+  include_recipe "php::module_#{mod}"  
 end
-
 
 template "#{node[:php][:dir]}/#{node[:php][:type] }/php.ini" do
    source "php.ini.erb"
