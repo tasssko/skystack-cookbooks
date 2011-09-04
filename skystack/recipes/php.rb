@@ -22,7 +22,7 @@
 include_recipe "php::php5"
 include_recipe "php::php5-cgi"
 
-apache_mod "php5" do
+apache_module "php5" do
   enable false
 end
 
@@ -30,7 +30,7 @@ node['skystack_php'].each do |php|
   php["extensions"].each do |value|
 
    if !value.nil?
-     include_recipe "php::module_#{mod}"
+     include_recipe "php::module_#{value}"
    end
    
   end
