@@ -20,7 +20,7 @@
 include_recipe "php::php5"
 include_recipe "php::php5-cgi"
 
-node['php_ext']['extensions'].each do |key, value|
+node['skystack_php']['extensions'].each do |key, value|
   if !value.nil?
     node.default[:php][:modules][value.to_sym] = 1
   end
