@@ -17,18 +17,11 @@
 # limitations under the License.
 #
 
-
-node['php']['extensions'].each do |key, value|
-  if !value.nil?
-    node.default[:php][:modules][value.to_sym] = true
-  end
-end
-
-#if node["attributes"]["php"]
-#   node[:php] = node["attributes"]["php"]
-#end
-
 include_recipe "php::php5"
 include_recipe "php::php5-cgi"
 
-
+node['php_ext']['extensions'].each do |key, value|
+  if !value.nil?
+    node.default[:php][:modules][value.to_sym] = 1
+  end
+end
