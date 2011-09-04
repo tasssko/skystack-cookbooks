@@ -19,10 +19,13 @@
 #
 
 
-packages = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => %w(php php-cli)}, "default" => %w{php5-cgi})
-
-packages.each do |pkg|
-  package pkg do
+package "php5-cgi" do
     action :upgrade
-  end
+end
+
+directory '/etc/php5/cgi' do
+  owner "root"
+  group "root"
+  mode "0755"
+  action :create
 end
